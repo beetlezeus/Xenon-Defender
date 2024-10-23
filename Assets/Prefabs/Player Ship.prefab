@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5417604327655588935}
   - component: {fileID: 6046252512196571862}
   m_Layer: 0
-  m_Name: StarSparrow1
+  m_Name: Player Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d627c47dba134418c8320f9f535832a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetBoost: 35
+  offsetBoost: 32
+  xRange: 16
+  yRange: 12
+  positionPitchCoefficient: -2
+  controlPitchCoefficient: -15
+  positionYawCoefficient: 2
+  controlRollCoefficient: -30
   movement:
     m_Name: Movement
     m_Type: 0
