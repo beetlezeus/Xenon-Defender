@@ -10,7 +10,8 @@ public class PlayerControls : MonoBehaviour
     private float pitch;
     private float yaw;
     private float roll;
-    [SerializeField] int offsetBoost = 32; // variable for adjusting movement speed on player input
+    
+    [SerializeField] int controlSpeed = 32; // variable for adjusting movement speed on player input
     [SerializeField] float xRange = 12.0f;    // range of movement to prevent ship from going offscreen
     [SerializeField] float yRange = 7.0f;    // range of movement to prevent ship from going offscreen
 
@@ -19,6 +20,8 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField] float positionYawCoefficient = 2.0f;
     [SerializeField] float controlRollCoefficient = -30.0f;
+
+    [SerializeField] float rotationSpeed = 10f;
 
     [SerializeField] InputAction movement; //input action for setting bindings for player movement
     [SerializeField] InputAction fire;     // input action for setting bindings for player shooting
@@ -52,8 +55,8 @@ public class PlayerControls : MonoBehaviour
         xMovementInput = movement.ReadValue<Vector2>().x;
         yMovementInput = movement.ReadValue<Vector2>().y;
 
-        float xOffset = xMovementInput * Time.deltaTime * offsetBoost;
-        float yOffset = yMovementInput * Time.deltaTime * offsetBoost;
+        float xOffset = xMovementInput * Time.deltaTime * controlSpeed;
+        float yOffset = yMovementInput * Time.deltaTime * controlSpeed;
 
         float offsetXPos = transform.localPosition.x + xOffset;
         float clampedXPos = Mathf.Clamp(offsetXPos, -xRange, xRange);
@@ -61,14 +64,6 @@ public class PlayerControls : MonoBehaviour
         float offsetYPos = transform.localPosition.y + yOffset;
         float clampedYPos = Mathf.Clamp(offsetYPos, -yRange, yRange);
 
-        //float horizontalMovement = Input.GetAxis("Horizontal");
-        //float verticalMovement = Input.GetAxis("Vertical");
-
-        //if (xMovement != 0 || yMovement != 0)
-        //{
-        //    Debug.Log("horizontal movement" + xMovement);
-        //    Debug.Log("vertical movement" + yMovement);
-        //}
 
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
     }
@@ -83,6 +78,11 @@ public class PlayerControls : MonoBehaviour
 
         roll = xMovementInput * controlRollCoefficient;
 
-        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+        //transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+
+        Quaternion targetRotation = Quaternion.Euler(pitch, 0f, roll);
+
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
+        
     }
 }
