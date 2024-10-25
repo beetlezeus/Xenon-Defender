@@ -10,19 +10,23 @@ public class PlayerControls : MonoBehaviour
     private float pitch;
     private float yaw;
     private float roll;
-    
+    private float fireInput;
+
+    [Header("Ship Movement Settings")]
     [SerializeField] int controlSpeed = 32; // variable for adjusting movement speed on player input
     [SerializeField] float xRange = 12.0f;    // range of movement to prevent ship from going offscreen
     [SerializeField] float yRange = 7.0f;    // range of movement to prevent ship from going offscreen
+    [SerializeField] float rotationSpeed = 10f;
 
+    [Header("Screen Position & Input movement factors")]
     [SerializeField] float positionPitchCoefficient = -2.0f;
     [SerializeField] float controlPitchCoefficient = -15.0f;
-
     [SerializeField] float positionYawCoefficient = 2.0f;
     [SerializeField] float controlRollCoefficient = -30.0f;
 
-    [SerializeField] float rotationSpeed = 10f;
 
+    [Header("Input Mapping and Shooting Settings")]
+    [SerializeField] GameObject[] fireBeams;
     [SerializeField] InputAction movement; //input action for setting bindings for player movement
     [SerializeField] InputAction fire;     // input action for setting bindings for player shooting
 
@@ -35,11 +39,13 @@ public class PlayerControls : MonoBehaviour
     void OnEnable()
     {
         movement.Enable();
+        fire.Enable();
     }
 
     void OnDisable()
     {
         movement.Disable();
+        fire.Disable();
     }
 
     // Update is called once per frame
@@ -47,6 +53,7 @@ public class PlayerControls : MonoBehaviour
     {
         ShipPosition();
         ShipRotation();
+        ShipFiring();
 
     }
 
@@ -80,9 +87,35 @@ public class PlayerControls : MonoBehaviour
 
         //transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
 
-        Quaternion targetRotation = Quaternion.Euler(pitch, 0f, roll);
+        Quaternion targetRotation = Quaternion.Euler(pitch, yaw, roll);
 
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
         
     }
+
+    void ShipFiring()
+    {
+        fireInput = fire.ReadValue<float>();
+
+        if (fireInput > 0.2)
+        {
+            ToggleFireBeams(true);
+        }
+        else
+        {
+            ToggleFireBeams(false);
+        }
+    }
+
+
+    void ToggleFireBeams(bool isShooting)
+    {
+        foreach (GameObject fireBeam in fireBeams)
+        {
+            var emission = fireBeam.GetComponent<ParticleSystem>().emission;
+
+            emission.enabled = isShooting;
+        }
+    }
+
 }
