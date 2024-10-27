@@ -27,8 +27,8 @@ public class PlayerControls : MonoBehaviour
 
     [Header("Input Mapping and Shooting Settings")]
     [SerializeField] GameObject[] fireBeams;
-    [SerializeField] InputAction movement; //input action for setting bindings for player movement
-    [SerializeField] InputAction fire;     // input action for setting bindings for player shooting
+    [SerializeField] public InputAction movement; //input action for setting bindings for player movement
+    [SerializeField] public InputAction fire;     // input action for setting bindings for player shooting
 
     // Start is called before the first frame update
     void Start()
