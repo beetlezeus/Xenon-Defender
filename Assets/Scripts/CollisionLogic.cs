@@ -4,14 +4,34 @@ using UnityEngine;
 
 public class CollisionLogic : MonoBehaviour
 {
+    private PlayerControls playerControls;
+    private SceneManagement sceneManager;
+    [SerializeField] ParticleSystem explosionVFX;
 
-    void OnCollisionEnter(Collision collision)
+    private void Start()
     {
-        Debug.Log(this.name + " has collided with " + collision.gameObject.name);
+        //playerControls = GameObject.Find("Player Rig").GetComponentInChildren<PlayerControls>();
+        playerControls = GetComponent<PlayerControls>();
+        sceneManager = GameObject.Find("Scene Manager").GetComponent<SceneManagement>();
+        
     }
+
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(this.name + " has collided with " + other.gameObject.name);
+        StartCrashSequence();
+    }
+
+    void StartCrashSequence()
+    {
+        //playerControls.enabled = false;
+        //explosionVFX.transform.parent = null; // REMOVE IF DONT WANT SPACESHIP TO DISAPPEAR
+        //explosionVFX.Play();
+        //Destroy(gameObject); // REMOVE IF DON'T WANT SPACESHIP TO DISAPPEAR
+        //sceneManager.RestartLevelWithDelay();
+
+        playerControls.enabled = false;
+        explosionVFX.Play();
+        sceneManager.RestartLevelWithDelay();
     }
 }
