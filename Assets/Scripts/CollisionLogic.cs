@@ -13,7 +13,7 @@ public class CollisionLogic : MonoBehaviour
     {
         //playerControls = GameObject.Find("Player Rig").GetComponentInChildren<PlayerControls>();
         playerControls = GetComponent<PlayerControls>();
-        sceneManager = GameObject.Find("Scene Manager").GetComponent<SceneManagement>();
+        sceneManager = GameObject.Find("Game Manager").GetComponent<SceneManagement>();
         
     }
 
