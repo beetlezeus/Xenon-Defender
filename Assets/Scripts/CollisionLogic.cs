@@ -6,6 +6,7 @@ public class CollisionLogic : MonoBehaviour
 {
     private PlayerControls playerControls;
     private SceneManagement sceneManager;
+    private bool isPlayerDead = false;
     [SerializeField] ParticleSystem explosionVFX;
 
     private void Start()
@@ -20,6 +21,8 @@ public class CollisionLogic : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         StartCrashSequence();
+        isPlayerDead = true;
+
     }
 
     void StartCrashSequence()
@@ -33,5 +36,11 @@ public class CollisionLogic : MonoBehaviour
         playerControls.enabled = false;
         explosionVFX.Play();
         sceneManager.RestartLevelWithDelay();
+    }
+
+    public bool PlayerCrashed()
+    {
+
+        return isPlayerDead;
     }
 }
