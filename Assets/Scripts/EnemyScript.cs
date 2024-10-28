@@ -6,7 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     [SerializeField] ParticleSystem enemyExplosionVFX;
     [SerializeField] Transform tempParent;
-    [SerializeField] int enemyPoints = 10;
+    [SerializeField] int enemyPoints = 100;
 
     private PlayerScore playerScore;
 
