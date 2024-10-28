@@ -6,19 +6,30 @@ public class EnemyScript : MonoBehaviour
 {
     [SerializeField] ParticleSystem enemyExplosionVFX;
     [SerializeField] Transform tempParent;
+    [SerializeField] int enemyPoints = 10;
+
+    private PlayerScore playerScore;
+
+    private void Start()
+    {
+        playerScore = GameObject.Find("Game Manager").GetComponent<PlayerScore>();
+    }
 
     private void OnParticleCollision(GameObject other)
     {
-        // old way of doing it
-        //enemyExplosionVFX.Play();
-        //enemyExplosionVFX.transform.parent = null;
-        //Destroy(this.gameObject);
+        UpdatScore();
+        StartDeathSequence();
+    }
 
-        // proper way for instantiation
+    private void UpdatScore()
+    {
+        playerScore.UpdateEnemyKillScore(enemyPoints);
+    }
+
+    void StartDeathSequence()
+    {
         ParticleSystem deathVFX = Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
-
         deathVFX.transform.parent = tempParent;
-
         Destroy(gameObject);
     }
 }
