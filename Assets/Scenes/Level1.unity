@@ -661,8 +661,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyExplosionVFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
+  enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
   tempParent: {fileID: 1492429009}
-  enemyPoints: 100
+  enemyHealth: 1
+  enemyScorePoints: 100
 --- !u!1 &1039187734
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,8 +807,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyExplosionVFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
+  enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
   tempParent: {fileID: 1492429009}
-  enemyPoints: 100
+  enemyHealth: 1
+  enemyScorePoints: 100
 --- !u!4 &1393192331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6550722156116311788, guid: 413e51c402b4e4e15aa3daf628ba9069, type: 3}
@@ -953,8 +957,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyExplosionVFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
+  enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
   tempParent: {fileID: 1492429009}
-  enemyPoints: 100
+  enemyHealth: 1
+  enemyScorePoints: 100
 --- !u!4 &1492429009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6898621596757334967, guid: 2f31958ef0a144f4599ea187cf1d4588, type: 3}
@@ -1252,8 +1258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyExplosionVFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
+  enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
   tempParent: {fileID: 1492429009}
-  enemyPoints: 100
+  enemyHealth: 1
+  enemyScorePoints: 100
 --- !u!1001 &306852320845627040
 PrefabInstance:
   m_ObjectHideFlags: 0

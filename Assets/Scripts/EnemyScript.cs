@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField] ParticleSystem enemyExplosionVFX;
+    [SerializeField] ParticleSystem enemyHitVFX;
     [SerializeField] Transform tempParent;
-    [SerializeField] int enemyPoints = 100;
+    [SerializeField] int enemyHealth = 1;
+    [SerializeField] int enemyScorePoints = 100;
 
     private PlayerScore playerScore;
 
@@ -17,13 +19,25 @@ public class EnemyScript : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        DecrementEnemyHealth(1);
         UpdatScore();
-        StartDeathSequence();
+
+        if (enemyHealth <= 0)
+        {
+            StartDeathSequence();
+        }
     }
 
     private void UpdatScore()
     {
-        playerScore.UpdateEnemyKillScore(enemyPoints);
+        playerScore.UpdateEnemyKillScore(enemyScorePoints);
+    }
+
+    public void DecrementEnemyHealth(int damageAmount)
+    {
+        ParticleSystem hitVFX = Instantiate(enemyHitVFX, transform.position, Quaternion.identity);
+        hitVFX.transform.parent = tempParent;
+        enemyHealth -= damageAmount;
     }
 
     void StartDeathSequence()
