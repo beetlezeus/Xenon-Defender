@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7389761044773035769}
   - component: {fileID: 1597992124033408888}
   - component: {fileID: 4701963845054915955}
+  - component: {fileID: 5379555852879515797}
   m_Layer: 0
-  m_Name: Enemy Placeholder
+  m_Name: Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,10 +31,9 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 443, y: 25, z: 438.91}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 2704333006244843749}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2357290558768671560
@@ -128,65 +128,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &212056842103539276
-PrefabInstance:
+--- !u!114 &5379555852879515797
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 7823636942386141702}
-    m_Modifications:
-    - target: {fileID: 1899524395750496410, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_Name
-      value: EnemyExplosionVFX
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
---- !u!4 &2704333006244843749 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2843697818602002089, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-  m_PrefabInstance: {fileID: 212056842103539276}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276319509630391532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37226211da122426f8b23d87e036fedb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyExplosionVFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
+  enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
+  tempParent: {fileID: 0}
+  enemyHealth: 2
+  enemyHitPoints: 100
+  enemyKillPoints: 500
