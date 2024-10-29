@@ -6,11 +6,11 @@ public class EnemyScript : MonoBehaviour
 {
     [SerializeField] ParticleSystem enemyExplosionVFX;
     [SerializeField] ParticleSystem enemyHitVFX;
-    [SerializeField] Transform tempParent;
     [SerializeField] int enemyHealth = 1;      // how many hits to kill enemy
     [SerializeField] int enemyHitPoints = 100; // how much to award for each enemy hit
     [SerializeField] int enemyKillPoints = 500; // how much to award for a kill
 
+    private Transform tempParent;
     private PlayerScore playerScore;
     private Rigidbody enemyRB;
 
@@ -18,6 +18,7 @@ public class EnemyScript : MonoBehaviour
     {
         playerScore = GameObject.Find("Game Manager").GetComponent<PlayerScore>();
         AddRB();
+        tempParent = GameObject.Find("Spawn At Runtime").transform;
     }
 
     private void AddRB()
