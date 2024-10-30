@@ -976,6 +976,7 @@ GameObject:
   - component: {fileID: 5485382733603974851}
   - component: {fileID: 1055609781631834235}
   - component: {fileID: 3779242677599087857}
+  - component: {fileID: 4530729512090369449}
   m_Layer: 0
   m_Name: Mongoose
   m_TagString: Untagged
@@ -1061,12 +1062,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37226211da122426f8b23d87e036fedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyExplosionVFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
+  enemyExplosionFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
   enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
-  tempParent: {fileID: 0}
   enemyHealth: 10
   enemyHitPoints: 200
   enemyKillPoints: 4000
+--- !u!65 &4530729512090369449
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887487291046648153}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.710506, y: 2.3671625, z: 10.785946}
+  m_Center: {x: -0.14367485, y: -0.21973595, z: -0.00000667572}
 --- !u!1 &5035161762497656229
 GameObject:
   m_ObjectHideFlags: 0

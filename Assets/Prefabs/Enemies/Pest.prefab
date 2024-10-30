@@ -1029,6 +1029,7 @@ GameObject:
   - component: {fileID: 2426916345051225378}
   - component: {fileID: 6711765004955298318}
   - component: {fileID: 3285670699095301212}
+  - component: {fileID: 6831970926995652399}
   m_Layer: 0
   m_Name: Pest
   m_TagString: Untagged
@@ -1114,12 +1115,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37226211da122426f8b23d87e036fedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyExplosionVFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
+  enemyExplosionFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
   enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
-  tempParent: {fileID: 0}
   enemyHealth: 8
   enemyHitPoints: 1000
   enemyKillPoints: 30000
+--- !u!65 &6831970926995652399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720850431185349972}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.879172, y: 1.8680346, z: 10.768427}
+  m_Center: {x: -0.08092952, y: -0.46737325, z: -0.0000076293945}
 --- !u!1 &4954534089537877752
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,12 +7,14 @@ public class CollisionLogic : MonoBehaviour
     private PlayerControls playerControls;
     private SceneManagement sceneManager;
     private bool isPlayerDead = false;
+    private AudioSource explosionSFX;
     [SerializeField] ParticleSystem explosionVFX;
 
     private void Start()
     {
         //playerControls = GameObject.Find("Player Rig").GetComponentInChildren<PlayerControls>();
         playerControls = GetComponent<PlayerControls>();
+        explosionSFX = GetComponent<AudioSource>();
         sceneManager = GameObject.Find("Game Manager").GetComponent<SceneManagement>();
         
     }
@@ -35,6 +37,10 @@ public class CollisionLogic : MonoBehaviour
 
         playerControls.enabled = false;
         explosionVFX.Play();
+        if (!explosionSFX.isPlaying)
+        {
+            explosionSFX.Play();
+        }
         sceneManager.RestartLevelWithDelay();
     }
 

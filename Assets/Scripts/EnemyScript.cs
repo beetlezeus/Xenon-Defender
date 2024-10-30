@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] ParticleSystem enemyExplosionVFX;
+    [SerializeField] ParticleSystem enemyExplosionFX;
     [SerializeField] ParticleSystem enemyHitVFX;
     [SerializeField] int enemyHealth = 1;      // how many hits to kill enemy
     [SerializeField] int enemyHitPoints = 100; // how much to award for each enemy hit
@@ -12,20 +12,20 @@ public class EnemyScript : MonoBehaviour
 
     private Transform tempParent;
     private PlayerScore playerScore;
-    private Rigidbody enemyRB;
+    //private Rigidbody enemyRB;
 
     private void Start()
     {
         playerScore = GameObject.Find("Game Manager").GetComponent<PlayerScore>();
-        AddRB();
+        //AddRB();
         tempParent = GameObject.Find("Spawn At Runtime").transform;
     }
 
-    private void AddRB()
-    {
-        enemyRB = gameObject.AddComponent<Rigidbody>();
-        enemyRB.useGravity = false;
-    }
+    //private void AddRB()
+    //{
+    //    enemyRB = gameObject.AddComponent<Rigidbody>();
+    //    enemyRB.useGravity = false;
+    //}
 
     private void OnParticleCollision(GameObject other)
     {
@@ -59,8 +59,8 @@ public class EnemyScript : MonoBehaviour
     {
         UpdatScore(enemyKillPoints);
         UpdateKillCount();
-        ParticleSystem deathVFX = Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
-        deathVFX.transform.parent = tempParent;
+        ParticleSystem deathFX = Instantiate(enemyExplosionFX, transform.position, Quaternion.identity);
+        deathFX.transform.parent = tempParent;
         Destroy(gameObject);
     }
 }
