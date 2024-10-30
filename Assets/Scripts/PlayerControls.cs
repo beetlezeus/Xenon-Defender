@@ -22,6 +22,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float positionPitchCoefficient = -2.0f;
     [SerializeField] float controlPitchCoefficient = -15.0f;
     [SerializeField] float positionYawCoefficient = 2.0f;
+    [SerializeField] float controlYawCoefficient = 2.0f;
     [SerializeField] float controlRollCoefficient = -30.0f;
 
 
@@ -81,7 +82,10 @@ public class PlayerControls : MonoBehaviour
         float controlPitch = yMovementInput * controlPitchCoefficient;
         pitch = positionPitch + controlPitch;
 
-        yaw = transform.localPosition.x * positionYawCoefficient; ;
+        float positionYaw = transform.localPosition.x * positionYawCoefficient;
+        float controlYaw = xMovementInput * controlYawCoefficient;
+
+        yaw = positionYaw + controlYaw;
 
         roll = xMovementInput * controlRollCoefficient;
 

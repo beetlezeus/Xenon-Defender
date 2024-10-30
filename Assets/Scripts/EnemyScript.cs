@@ -40,7 +40,12 @@ public class EnemyScript : MonoBehaviour
 
     private void UpdatScore(int points)
     {
-        playerScore.UpdateEnemyKillScore(points);
+        playerScore.UpdateEnemyHitScore(points);
+    }
+
+    private void UpdateKillCount()
+    {
+        playerScore.UpdateEnemyKillCount();
     }
 
     public void DecrementEnemyHealth(int damageAmount)
@@ -53,6 +58,7 @@ public class EnemyScript : MonoBehaviour
     void StartDeathSequence()
     {
         UpdatScore(enemyKillPoints);
+        UpdateKillCount();
         ParticleSystem deathVFX = Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
         deathVFX.transform.parent = tempParent;
         Destroy(gameObject);
