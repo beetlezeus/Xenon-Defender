@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] ParticleSystem enemyExplosionVFX;
+    [SerializeField] ParticleSystem enemyExplosionFX;
     [SerializeField] ParticleSystem enemyHitVFX;
-    [SerializeField] Transform tempParent;
     [SerializeField] int enemyHealth = 1;      // how many hits to kill enemy
     [SerializeField] int enemyHitPoints = 100; // how much to award for each enemy hit
     [SerializeField] int enemyKillPoints = 500; // how much to award for a kill
 
+    private Transform tempParent;
     private PlayerScore playerScore;
-    private Rigidbody enemyRB;
+    //private Rigidbody enemyRB;
 
     private void Start()
     {
         playerScore = GameObject.Find("Game Manager").GetComponent<PlayerScore>();
-        AddRB();
+        //AddRB();
+        tempParent = GameObject.Find("Spawn At Runtime").transform;
     }
 
-    private void AddRB()
-    {
-        enemyRB = gameObject.AddComponent<Rigidbody>();
-        enemyRB.useGravity = false;
-    }
+    //private void AddRB()
+    //{
+    //    enemyRB = gameObject.AddComponent<Rigidbody>();
+    //    enemyRB.useGravity = false;
+    //}
 
     private void OnParticleCollision(GameObject other)
     {
@@ -39,7 +40,12 @@ public class EnemyScript : MonoBehaviour
 
     private void UpdatScore(int points)
     {
-        playerScore.UpdateEnemyKillScore(points);
+        playerScore.UpdateEnemyHitScore(points);
+    }
+
+    private void UpdateKillCount()
+    {
+        playerScore.UpdateEnemyKillCount();
     }
 
     public void DecrementEnemyHealth(int damageAmount)
@@ -52,8 +58,9 @@ public class EnemyScript : MonoBehaviour
     void StartDeathSequence()
     {
         UpdatScore(enemyKillPoints);
-        ParticleSystem deathVFX = Instantiate(enemyExplosionVFX, transform.position, Quaternion.identity);
-        deathVFX.transform.parent = tempParent;
+        UpdateKillCount();
+        ParticleSystem deathFX = Instantiate(enemyExplosionFX, transform.position, Quaternion.identity);
+        deathFX.transform.parent = tempParent;
         Destroy(gameObject);
     }
 }

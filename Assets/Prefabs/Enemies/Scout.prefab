@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 7953771666725745014}
   - component: {fileID: 3839139857498683952}
   - component: {fileID: -9014914461226989214}
+  - component: {fileID: -951429364553043611}
   m_Layer: 0
   m_Name: Scout
   m_TagString: Untagged
@@ -203,12 +204,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37226211da122426f8b23d87e036fedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyExplosionVFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
+  enemyExplosionFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
   enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
-  tempParent: {fileID: 0}
   enemyHealth: 4
   enemyHitPoints: 400
   enemyKillPoints: 3000
+--- !u!65 &-951429364553043611
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541294906768373922}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.599672, y: 1.729373, z: 10.248714}
+  m_Center: {x: -0.037812233, y: -0.15427002, z: 0.18128046}
 --- !u!1 &1066507847113179766
 GameObject:
   m_ObjectHideFlags: 0

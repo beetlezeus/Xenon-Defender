@@ -105,8 +105,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.5213191
+  m_Center: {x: 0, y: 0, z: 0.003827413}
 --- !u!95 &4701963845054915955
 Animator:
   serializedVersion: 5
@@ -140,9 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37226211da122426f8b23d87e036fedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyExplosionVFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
+  enemyExplosionFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
   enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
-  tempParent: {fileID: 0}
   enemyHealth: 2
   enemyHitPoints: 100
   enemyKillPoints: 500
