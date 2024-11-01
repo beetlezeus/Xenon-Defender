@@ -144,4 +144,4 @@ MonoBehaviour:
   enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
   enemyHealth: 2
   enemyHitPoints: 100
-  enemyKillPoints: 500
+  enemyKillPoints: 1000
