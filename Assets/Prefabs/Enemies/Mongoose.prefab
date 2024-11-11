@@ -1028,7 +1028,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f9ee6e42e2005942a5b092cb9f2087c, type: 2}
+  - {fileID: 2100000, guid: 138dd97cb63790543aebb7ab1036fcb7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1062,11 +1062,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37226211da122426f8b23d87e036fedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyExplosionFX: {fileID: 1102310653968992648, guid: 582887e1f3728404c8594f93de3bd88b, type: 3}
-  enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
+  enemyExplosionFX: {fileID: 1102310653968992648, guid: 675b4faf434084077a26997d223945f9, type: 3}
+  enemyHitVFX: {fileID: 1102310653968992648, guid: 18478d94fbc4a4fd6a85e2253931c191, type: 3}
   enemyHealth: 10
-  enemyHitPoints: 200
-  enemyKillPoints: 4000
+  enemyHitPoints: 100
+  enemyKillPoints: 3000
 --- !u!65 &4530729512090369449
 BoxCollider:
   m_ObjectHideFlags: 0
