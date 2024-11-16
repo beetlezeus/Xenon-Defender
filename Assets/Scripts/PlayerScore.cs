@@ -6,8 +6,8 @@ using TMPro;
 
 public class PlayerScore : MonoBehaviour
 {
-    private int enemyHitScore;
-    private int enemyKillCount;
+    private int enemyHitScore = 0;
+    private int enemyKillCount = 0;
 
     private TMP_Text enemyHitText;
     private TMP_Text enemyKillText;
@@ -19,12 +19,6 @@ public class PlayerScore : MonoBehaviour
         enemyKillText = GameObject.Find("Enemy Kill Text").GetComponent<TMP_Text>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateEnemyHitScore(int hitScore)
     {
         enemyHitScore += hitScore;
@@ -33,7 +27,7 @@ public class PlayerScore : MonoBehaviour
 
     public void UpdateEnemyKillCount()
     {
-        enemyKillCount += 1;
+        enemyKillCount ++;
         enemyKillText.text = "KILLS: " + enemyKillCount.ToString();
     }
 }

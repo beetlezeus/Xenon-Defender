@@ -12,25 +12,23 @@ public class EnemyScript : MonoBehaviour
 
     private Transform tempParent;
     private PlayerScore playerScore;
-    //private Rigidbody enemyRB;
+
+    private bool enemyDead = false;
 
     private void Start()
     {
         playerScore = GameObject.Find("Game Manager").GetComponent<PlayerScore>();
-        //AddRB();
         tempParent = GameObject.Find("Spawn At Runtime").transform;
     }
 
-    //private void AddRB()
-    //{
-    //    enemyRB = gameObject.AddComponent<Rigidbody>();
-    //    enemyRB.useGravity = false;
-    //}
-
     private void OnParticleCollision(GameObject other)
     {
-        DecrementEnemyHealth(1);
-        UpdatScore(enemyHitPoints);
+        if (enemyDead)
+        {
+            return;
+        }
+
+        ProcessHit();
 
         if (enemyHealth <= 0)
         {
@@ -38,29 +36,38 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+
+    private void ProcessHit()
+    {
+        enemyHealth -= 1;
+        UpdatScore(enemyHitPoints);
+        PlayHitVFX();
+    }
+
     private void UpdatScore(int points)
     {
         playerScore.UpdateEnemyHitScore(points);
     }
 
-    private void UpdateKillCount()
-    {
-        playerScore.UpdateEnemyKillCount();
-    }
-
-    public void DecrementEnemyHealth(int damageAmount)
+    private void PlayHitVFX()
     {
         ParticleSystem hitVFX = Instantiate(enemyHitVFX, transform.position, Quaternion.identity);
         hitVFX.transform.parent = tempParent;
-        enemyHealth -= damageAmount;
+    }
+
+    void PlayDeathVFX()
+    {
+        ParticleSystem deathFX = Instantiate(enemyExplosionFX, transform.position, Quaternion.identity);
+        deathFX.transform.parent = tempParent;
     }
 
     void StartDeathSequence()
     {
+        enemyDead = true;
+        GetComponent<Collider>().enabled = false;
+        playerScore.UpdateEnemyKillCount();
         UpdatScore(enemyKillPoints);
-        UpdateKillCount();
-        ParticleSystem deathFX = Instantiate(enemyExplosionFX, transform.position, Quaternion.identity);
-        deathFX.transform.parent = tempParent;
+        PlayDeathVFX();
         Destroy(gameObject);
     }
 }
