@@ -5537,6 +5537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 2717937816071199621, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3001221007585423679, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
       propertyPath: m_Antialiasing
       value: 2
