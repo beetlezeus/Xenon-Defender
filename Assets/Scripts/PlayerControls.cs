@@ -11,6 +11,8 @@ public class PlayerControls : MonoBehaviour
     private float yaw;
     private float roll;
     private float fireInput;
+    private AudioSource audioSource;
+    [SerializeField] AudioClip fireSound;
 
     [Header("Ship Movement Settings")]
     [SerializeField] int controlSpeed = 32; // variable for adjusting movement speed on player input
@@ -34,7 +36,7 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -104,10 +106,12 @@ public class PlayerControls : MonoBehaviour
         if (fireInput > 0.2)
         {
             ToggleFireBeams(true);
+            //PlayFireSound();
         }
         else
         {
             ToggleFireBeams(false);
+            //StopFireSound();
         }
     }
 
@@ -122,4 +126,19 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    private void PlayFireSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(fireSound);
+        }
+    }
+
+    private void StopFireSound()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+    }
 }
