@@ -11,6 +11,9 @@ public class PlayerControls : MonoBehaviour
     private float yaw;
     private float roll;
     private float fireInput;
+    //private float shootTimer;
+    //[SerializeField] float shootCountDown = 2f;
+    //[SerializeField] float shootDuration = 4.0f;
     private AudioSource audioSource;
     [SerializeField] AudioClip fireSound;
 
@@ -32,6 +35,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] GameObject[] fireBeams;
     [SerializeField] public InputAction movement; //input action for setting bindings for player movement
     [SerializeField] public InputAction fire;     // input action for setting bindings for player shooting
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +61,11 @@ public class PlayerControls : MonoBehaviour
         ShipPosition();
         ShipRotation();
         ShipFiring();
+
+        //if (shootTimer > 0)
+        //{
+        //    shootTimer -= Time.deltaTime;
+        //}
 
     }
 
@@ -103,6 +112,15 @@ public class PlayerControls : MonoBehaviour
     {
         fireInput = fire.ReadValue<float>();
 
+        //if(shootTimer > 0)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    shootTimer = shootCountDown;
+        //}
+
         if (fireInput > 0.2)
         {
             ToggleFireBeams(true);
@@ -113,7 +131,14 @@ public class PlayerControls : MonoBehaviour
             ToggleFireBeams(false);
             //StopFireSound();
         }
+
+        //StartCoroutine(ResetFiring());
     }
+
+   //IEnumerator ResetFiring()
+   // {
+   //     yield return new WaitForSeconds(shootDuration);
+   // }
 
 
     void ToggleFireBeams(bool isShooting)
