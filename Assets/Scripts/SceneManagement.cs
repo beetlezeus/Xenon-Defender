@@ -16,4 +16,10 @@ public class SceneManagement : MonoBehaviour
     {
         Invoke("RestartLevel", 1);
     }
+
+    public void LoadNextStage()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex +1);
+    }
 }
