@@ -4089,7 +4089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Instructions
+  m_text: High-Scores
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35164b8fb4a55441ba3020ee89435f75, type: 2}
   m_sharedMaterial: {fileID: 8086149564074919638, guid: 35164b8fb4a55441ba3020ee89435f75, type: 2}
@@ -4830,7 +4830,7 @@ GameObject:
   - component: {fileID: 1342157242}
   - component: {fileID: 1342157241}
   m_Layer: 5
-  m_Name: Leaderboard
+  m_Name: About
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7116,7 +7116,7 @@ GameObject:
   - component: {fileID: 2077112935}
   - component: {fileID: 2077112934}
   m_Layer: 5
-  m_Name: Instructions
+  m_Name: High Scores
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7399,7 +7399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leaderboard
+  m_text: About
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35164b8fb4a55441ba3020ee89435f75, type: 2}
   m_sharedMaterial: {fileID: 8086149564074919638, guid: 35164b8fb4a55441ba3020ee89435f75, type: 2}
