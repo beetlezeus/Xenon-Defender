@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-public class PlayerControls : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private float xMovementInput;
     private float yMovementInput;

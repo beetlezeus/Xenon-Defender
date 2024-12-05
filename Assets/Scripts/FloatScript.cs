@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FloatScript : MonoBehaviour
 {
-    [SerializeField] float amplitude = 6f; // Oscillation height
-    [SerializeField] float frequency = 2f; // Oscillation speed
-    [SerializeField] float noiseScale = 0.8f; // Scale for Perlin Noise contribution
-    [SerializeField] float offset = 4; // Random offset for Perlin Noise
+    private float amplitude; // Oscillation height
+    private float frequency; // Oscillation speed
+    [SerializeField] float noiseScale = 0.9f; // Scale for Perlin Noise contribution
+    private float offset; // Random offset for Perlin Noise
 
     private Vector3 startPos;
 
@@ -17,8 +17,8 @@ public class FloatScript : MonoBehaviour
         startPos = transform.position;
 
         // Randomize parameters for organic motion
-        amplitude = Random.Range(5f, 10f);
-        frequency = Random.Range(1.5f, 3f);
+        amplitude = Random.Range(3f, 12f);
+        frequency = Random.Range(2f, 6f);
         offset = Random.Range(0f, 100f); // Ensure variation across objects
     }
 

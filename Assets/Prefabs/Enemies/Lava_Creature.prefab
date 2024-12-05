@@ -158,7 +158,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5536f25d4036d4927b37fb1c40ea71d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 6
-  frequency: 3
-  noiseScale: 0.5
-  offset: 1.5
+  noiseScale: 0.9

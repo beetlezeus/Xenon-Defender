@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollisionLogic : MonoBehaviour
 {
-    private PlayerControls playerControls;
+    private PlayerMovement playerControls;
     private SceneManagement sceneManager;
     private bool isPlayerDead = false;
     private AudioSource audioSource;
@@ -14,7 +14,7 @@ public class CollisionLogic : MonoBehaviour
     private void Start()
     {
         //playerControls = GameObject.Find("Player Rig").GetComponentInChildren<PlayerControls>();
-        playerControls = GetComponent<PlayerControls>();
+        playerControls = GetComponent<PlayerMovement>();
         audioSource = GetComponent<AudioSource>();
         sceneManager = GameObject.Find("Game Manager").GetComponent<SceneManagement>();
         

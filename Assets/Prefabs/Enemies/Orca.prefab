@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyExplosionFX: {fileID: 1102310653968992648, guid: 675b4faf434084077a26997d223945f9, type: 3}
   enemyHitVFX: {fileID: 1102310653968992648, guid: 18478d94fbc4a4fd6a85e2253931c191, type: 3}
-  enemyHealth: 20
+  enemyHealth: 12
   enemyHitPoints: 100
   enemyKillPoints: 5000
 --- !u!65 &2052142499944272305
