@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-public class PlayerControls : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private float xMovementInput;
     private float yMovementInput;
@@ -11,6 +11,11 @@ public class PlayerControls : MonoBehaviour
     private float yaw;
     private float roll;
     private float fireInput;
+    //private float shootTimer;
+    //[SerializeField] float shootCountDown = 2f;
+    //[SerializeField] float shootDuration = 4.0f;
+    private AudioSource audioSource;
+    [SerializeField] AudioClip fireSound;
 
     [Header("Ship Movement Settings")]
     [SerializeField] int controlSpeed = 32; // variable for adjusting movement speed on player input
@@ -31,10 +36,11 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] public InputAction movement; //input action for setting bindings for player movement
     [SerializeField] public InputAction fire;     // input action for setting bindings for player shooting
 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -55,6 +61,11 @@ public class PlayerControls : MonoBehaviour
         ShipPosition();
         ShipRotation();
         ShipFiring();
+
+        //if (shootTimer > 0)
+        //{
+        //    shootTimer -= Time.deltaTime;
+        //}
 
     }
 
@@ -101,15 +112,33 @@ public class PlayerControls : MonoBehaviour
     {
         fireInput = fire.ReadValue<float>();
 
+        //if(shootTimer > 0)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    shootTimer = shootCountDown;
+        //}
+
         if (fireInput > 0.2)
         {
             ToggleFireBeams(true);
+            //PlayFireSound();
         }
         else
         {
             ToggleFireBeams(false);
+            //StopFireSound();
         }
+
+        //StartCoroutine(ResetFiring());
     }
+
+   //IEnumerator ResetFiring()
+   // {
+   //     yield return new WaitForSeconds(shootDuration);
+   // }
 
 
     void ToggleFireBeams(bool isShooting)
@@ -122,4 +151,19 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    private void PlayFireSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(fireSound);
+        }
+    }
+
+    private void StopFireSound()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+    }
 }

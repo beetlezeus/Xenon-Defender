@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class CollisionLogic : MonoBehaviour
 {
-    private PlayerControls playerControls;
+    private PlayerMovement playerControls;
     private SceneManagement sceneManager;
     private bool isPlayerDead = false;
-    private AudioSource explosionSFX;
+    private AudioSource audioSource;
+    [SerializeField] AudioClip explosionAudioClip;
     [SerializeField] ParticleSystem explosionVFX;
 
     private void Start()
     {
         //playerControls = GameObject.Find("Player Rig").GetComponentInChildren<PlayerControls>();
-        playerControls = GetComponent<PlayerControls>();
-        explosionSFX = GetComponent<AudioSource>();
+        playerControls = GetComponent<PlayerMovement>();
+        audioSource = GetComponent<AudioSource>();
         sceneManager = GameObject.Find("Game Manager").GetComponent<SceneManagement>();
         
     }
@@ -37,9 +38,14 @@ public class CollisionLogic : MonoBehaviour
 
         playerControls.enabled = false;
         explosionVFX.Play();
-        if (!explosionSFX.isPlaying)
+        if (audioSource.isPlaying)
         {
-            explosionSFX.Play();
+            audioSource.Stop();
+            audioSource.PlayOneShot(explosionAudioClip);
+        }
+        else
+        {
+            audioSource.PlayOneShot(explosionAudioClip);
         }
         sceneManager.RestartLevelWithDelay();
     }
