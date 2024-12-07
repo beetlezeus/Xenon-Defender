@@ -10,12 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private float pitch;
     private float yaw;
     private float roll;
-    private float fireInput;
-    //private float shootTimer;
-    //[SerializeField] float shootCountDown = 2f;
-    //[SerializeField] float shootDuration = 4.0f;
-    private AudioSource audioSource;
-    [SerializeField] AudioClip fireSound;
 
     [Header("Ship Movement Settings")]
     [SerializeField] int controlSpeed = 32; // variable for adjusting movement speed on player input
@@ -31,28 +25,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float controlRollCoefficient = -30.0f;
 
 
-    [Header("Input Mapping and Shooting Settings")]
-    [SerializeField] GameObject[] fireBeams;
+    [Header("Movement Input Mapping")]
     [SerializeField] public InputAction movement; //input action for setting bindings for player movement
-    [SerializeField] public InputAction fire;     // input action for setting bindings for player shooting
-
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+  
     }
 
     void OnEnable()
     {
         movement.Enable();
-        fire.Enable();
     }
 
     void OnDisable()
     {
         movement.Disable();
-        fire.Disable();
     }
 
     // Update is called once per frame
@@ -60,13 +49,6 @@ public class PlayerMovement : MonoBehaviour
     {
         ShipPosition();
         ShipRotation();
-        ShipFiring();
-
-        //if (shootTimer > 0)
-        //{
-        //    shootTimer -= Time.deltaTime;
-        //}
-
     }
 
     void ShipPosition()
@@ -106,64 +88,5 @@ public class PlayerMovement : MonoBehaviour
 
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
         
-    }
-
-    void ShipFiring()
-    {
-        fireInput = fire.ReadValue<float>();
-
-        //if(shootTimer > 0)
-        //{
-        //    return;
-        //}
-        //else
-        //{
-        //    shootTimer = shootCountDown;
-        //}
-
-        if (fireInput > 0.2)
-        {
-            ToggleFireBeams(true);
-            //PlayFireSound();
-        }
-        else
-        {
-            ToggleFireBeams(false);
-            //StopFireSound();
-        }
-
-        //StartCoroutine(ResetFiring());
-    }
-
-   //IEnumerator ResetFiring()
-   // {
-   //     yield return new WaitForSeconds(shootDuration);
-   // }
-
-
-    void ToggleFireBeams(bool isShooting)
-    {
-        foreach (GameObject fireBeam in fireBeams)
-        {
-            var emission = fireBeam.GetComponent<ParticleSystem>().emission;
-
-            emission.enabled = isShooting;
-        }
-    }
-
-    private void PlayFireSound()
-    {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.PlayOneShot(fireSound);
-        }
-    }
-
-    private void StopFireSound()
-    {
-        if (audioSource.isPlaying)
-        {
-            audioSource.Stop();
-        }
     }
 }
