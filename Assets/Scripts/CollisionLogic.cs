@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CollisionLogic : MonoBehaviour
 {
-    private PlayerMovement playerControls;
+    private PlayerMovement playerMovement;
+    private PlayerShooting playerShooting;
     private SceneManagement sceneManager;
     private bool isPlayerDead = false;
     private AudioSource audioSource;
@@ -14,7 +15,8 @@ public class CollisionLogic : MonoBehaviour
     private void Start()
     {
         //playerControls = GameObject.Find("Player Rig").GetComponentInChildren<PlayerControls>();
-        playerControls = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerShooting = GetComponent<PlayerShooting>();
         audioSource = GetComponent<AudioSource>();
         sceneManager = GameObject.Find("Game Manager").GetComponent<SceneManagement>();
         
@@ -36,7 +38,8 @@ public class CollisionLogic : MonoBehaviour
         //Destroy(gameObject); // REMOVE IF DON'T WANT SPACESHIP TO DISAPPEAR
         //sceneManager.RestartLevelWithDelay();
 
-        playerControls.enabled = false;
+        playerMovement.enabled = false;
+        playerShooting.enabled = false;
         explosionVFX.Play();
         if (audioSource.isPlaying)
         {

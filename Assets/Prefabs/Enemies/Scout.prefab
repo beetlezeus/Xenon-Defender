@@ -208,7 +208,7 @@ MonoBehaviour:
   enemyHitVFX: {fileID: 1102310653968992648, guid: ebe82d0b3c9564ac6a94fb76ead1c392, type: 3}
   enemyHealth: 6
   enemyHitPoints: 100
-  enemyKillPoints: 3000
+  enemyKillPoints: 2000
 --- !u!65 &-951429364553043611
 BoxCollider:
   m_ObjectHideFlags: 0
