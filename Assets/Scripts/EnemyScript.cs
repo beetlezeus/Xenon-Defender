@@ -11,13 +11,13 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] int enemyKillPoints = 500; // how much to award for a kill
 
     private Transform tempParent;
-    private PlayerScore playerScore;
+    private PlayerScoreUI playerScore;
 
     private bool enemyDead = false;
 
     private void Start()
     {
-        playerScore = GameObject.Find("Game Manager").GetComponent<PlayerScore>();
+        playerScore = GameObject.Find("Game Manager").GetComponent<PlayerScoreUI>();
         tempParent = GameObject.Find("Spawn At Runtime").transform;
     }
 
