@@ -26,7 +26,8 @@ public class PlayerCollision : MonoBehaviour
         if (!PersistentGameManager.Instance.isCrashed)
         {
             StartCrashSequence();
-            PersistentGameManager.Instance.DecrementLives();
+            //PersistentGameManager.Instance.DecrementLives();
+            PersistentGameManager.Instance.StartDeathSequence();
         }
 
     }
