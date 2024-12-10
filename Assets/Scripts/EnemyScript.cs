@@ -11,13 +11,13 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] int enemyKillPoints = 500; // how much to award for a kill
 
     private Transform tempParent;
-    private PlayerScore playerScore;
+    //private PlayerScoreUI playerScore;
 
     private bool enemyDead = false;
 
     private void Start()
     {
-        playerScore = GameObject.Find("Game Manager").GetComponent<PlayerScore>();
+        //playerScore = GameObject.Find("Game Manager").GetComponent<PlayerScoreUI>();
         tempParent = GameObject.Find("Spawn At Runtime").transform;
     }
 
@@ -46,7 +46,8 @@ public class EnemyScript : MonoBehaviour
 
     private void UpdatScore(int points)
     {
-        playerScore.UpdateEnemyHitScore(points);
+        //playerScore.UpdateEnemyHitScore(points);
+        PersistentGameManager.Instance.UpdateEnemyHitScore(points);
     }
 
     private void PlayHitVFX()
@@ -65,7 +66,8 @@ public class EnemyScript : MonoBehaviour
     {
         enemyDead = true;
         GetComponent<Collider>().enabled = false;
-        playerScore.UpdateEnemyKillCount();
+        //playerScore.UpdateEnemyKillCount();
+        PersistentGameManager.Instance.UpdateEnemyKillCount();
         UpdatScore(enemyKillPoints);
         PlayDeathVFX();
         Destroy(gameObject);
