@@ -23,6 +23,12 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex +1);
     }
 
+    public void LoadFirstStage()
+    {
+        PersistentGameManager.Instance.ResetDeathState();
+        SceneManager.LoadScene(1);
+    }
+
     public void ReturnToMain()
     {
         SceneManager.LoadScene(0);

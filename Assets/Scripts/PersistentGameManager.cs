@@ -77,6 +77,7 @@ public class PersistentGameManager : MonoBehaviour
         ResetCrashState();
         AssignUITextObjects();
         ResetScores();
+        ClearGameScoreText();
         UpdateLivesDisplay();
     }
 
@@ -130,10 +131,7 @@ public class PersistentGameManager : MonoBehaviour
         {
             playerLives--;
             isCrashed = true;
-            ResetScores();
             UpdateLivesDisplay();
-            UpdateEnemyHitScore(0);
-            UpdateEnemyKillCount();
 
             if (playerLives <= 0)
             {
@@ -153,12 +151,19 @@ public class PersistentGameManager : MonoBehaviour
         }
         ResetScores();
         RestartLevelWithDelay();
-        
     }
 
     public void ResetCrashState()
     {
         isCrashed = false;
+    }
+
+    public void ResetDeathState()
+    {
+        isDead = false;
+        ResetScores();
+        ClearGameScoreText();
+        playerLives = 3;
     }
 
     void UpdateLivesDisplay()
@@ -167,7 +172,7 @@ public class PersistentGameManager : MonoBehaviour
         playerLivesText.text = "Lives: " + playerLives.ToString();
     }
 
-    void ResetScores()
+    public void ResetScores()
     {
         enemyHitScore = 0;
         enemyKillCount = 0;
@@ -181,6 +186,13 @@ public class PersistentGameManager : MonoBehaviour
             scoreText.text = "SCORE: " + enemyHitScore.ToString();
         }
         
+    }
+
+    public void ClearGameScoreText()
+    {
+        scoreText.text = "SCORE: ";
+        killText.text = "KILLS: ";
+
     }
 
     public void UpdateEnemyKillCount()
@@ -197,6 +209,7 @@ public class PersistentGameManager : MonoBehaviour
         transitionCanvas.SetActive(true);
         if (playerDead)
         {
+            missionSuccessPanel.SetActive(false);
             missionFailedPanel.SetActive(true);
             missionFailedLivesText.text = "Lives: " + playerLives.ToString();
             missionFailedKillsText.text = "Kills: " + enemyKillCount.ToString();
@@ -204,11 +217,12 @@ public class PersistentGameManager : MonoBehaviour
             missionFailedReturnButton.onClick.RemoveAllListeners();
             missionFailedProceedButton.onClick.RemoveAllListeners();
             // Add Listeners 
-            missionFailedReturnButton.onClick.AddListener(ReturnToMainWithDelay);
-            missionFailedProceedButton.onClick.AddListener(RestartLevelWithDelay);
+            missionFailedReturnButton.onClick.AddListener(ReturnToMain);
+            missionFailedProceedButton.onClick.AddListener(RestartLevel);
         }
         else
         {
+            missionFailedPanel.SetActive(false);
             missionSuccessPanel.SetActive(true);
             missionSuccessLivesText.text = "Lives: " + playerLives.ToString();
             missionSuccessKillsText.text = "Kills: " + enemyKillCount.ToString();
@@ -216,13 +230,19 @@ public class PersistentGameManager : MonoBehaviour
             missionSuccessReturnButton.onClick.RemoveAllListeners();
             missionSuccessProceedButton.onClick.RemoveAllListeners();
             // Add Listeners
-            missionFailedProceedButton.onClick.AddListener(RestartLevelWithDelay);
-            missionSuccessReturnButton.onClick.AddListener(ReturnToMainWithDelay);
+            missionSuccessProceedButton.onClick.AddListener(RestartLevel);
+            missionSuccessReturnButton.onClick.AddListener(ReturnToMain);
         }
     }
 
     public void RestartLevel()
     {
+        if (isDead)
+        {
+            isDead = false;
+            playerLives = 3;
+        }
+        transitionCanvas.SetActive(false);
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
@@ -230,23 +250,26 @@ public class PersistentGameManager : MonoBehaviour
     public void RestartLevelWithDelay()
     {
         Invoke("RestartLevel", 1);
+        transitionCanvas.SetActive(false);
     }
 
     public void LoadNextStage()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);
+        transitionCanvas.SetActive(false);
     }
 
     public void ReturnToMain()
     {
         SceneManager.LoadScene(0);
+        transitionCanvas.SetActive(false);
     }
 
     public void ReturnToMainWithDelay()
     {
         Invoke("ReturnToMain", 1);
-        PersistentGameManager.Instance.transitionCanvas.SetActive(false);
+        Instance.transitionCanvas.SetActive(false);
     }
 
     void OnDestroy()
