@@ -1417,7 +1417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &234588617
 Transform:
   m_ObjectHideFlags: 0
@@ -8634,8 +8634,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5219523898942453663}
-        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
+      - m_Target: {fileID: 5219523898942453666}
+        m_TargetAssemblyTypeName: PersistentGameManager, Assembly-CSharp
         m_MethodName: LoadNextStage
         m_Mode: 1
         m_Arguments:
@@ -9429,8 +9429,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9974,7 +9974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!154 &1787854057
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -10858,7 +10858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1931924095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11764,7 +11764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2082740353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11881,7 +11881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.12941177}
+  m_Color: {r: 0.040236473, g: 0, b: 1, a: 0.23529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12461,6 +12461,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gameplay UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7255668981350728388, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: gameUIPanel
+      value: 
+      objectReference: {fileID: 5219523898942453665}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: transitionCanvas
+      value: 
+      objectReference: {fileID: 489235897}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionFailedPanel
+      value: 
+      objectReference: {fileID: 2082740352}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionSuccessPanel
+      value: 
+      objectReference: {fileID: 1931924094}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionFailedKillsText
+      value: 
+      objectReference: {fileID: 290146893}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionFailedLivesText
+      value: 
+      objectReference: {fileID: 711628372}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionSuccessKillsText
+      value: 
+      objectReference: {fileID: 108610060}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionSuccessLivesText
+      value: 
+      objectReference: {fileID: 1303071134}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionFailedReturnButton
+      value: 
+      objectReference: {fileID: 1421735142}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionFailedProceedButton
+      value: 
+      objectReference: {fileID: 340764146}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionSuccessReturnButton
+      value: 
+      objectReference: {fileID: 1556331329}
+    - target: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+      propertyPath: missionSuccessProceedButton
+      value: 
+      objectReference: {fileID: 118921096}
     - target: {fileID: 8464029834132618758, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -12477,7 +12529,8 @@ PrefabInstance:
       propertyPath: menuButtons.Array.data[2]
       value: 
       objectReference: {fileID: 1342157241}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8464029834132618758, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3834072610692350214, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
@@ -12485,22 +12538,27 @@ PrefabInstance:
       addedObject: {fileID: 489235898}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
---- !u!114 &5219523898942453663 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5851707874124689320, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
-  m_PrefabInstance: {fileID: 5219523898942453662}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e12632c5a8a554e4a9b78a9ca60bfbcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &5219523898942453664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3834072610692350214, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
   m_PrefabInstance: {fileID: 5219523898942453662}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5219523898942453665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 679354602291316150, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+  m_PrefabInstance: {fileID: 5219523898942453662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5219523898942453666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7268279927735773322, guid: c2c598b30713e4e55b62b6a2256a4213, type: 3}
+  m_PrefabInstance: {fileID: 5219523898942453662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0051e3fc63cd44d3d886db6647b75366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
