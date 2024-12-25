@@ -15,7 +15,6 @@ public class PersistentGameManager : MonoBehaviour
     private int enemyHitScore = 0;
     private int enemyKillCount = 0;
     public bool isDead = false;
-    private PlayableDirector masterTimeline;
 
     [SerializeField] GameObject gameUIPanel;
     [SerializeField] TMP_Text playerLivesText;
@@ -58,11 +57,6 @@ public class PersistentGameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to prevent memory leaks
     }
 
-    void Start()
-    {
-        AssignMasterTimeline();
-    }
-
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -79,34 +73,6 @@ public class PersistentGameManager : MonoBehaviour
         ResetScores();
         ClearGameScoreText();
         UpdateLivesDisplay();
-    }
-
-    private void AssignMasterTimeline()
-    {
-        if (SceneManager.GetActiveScene().buildIndex > 0)
-        {
-            masterTimeline = GameObject.Find("Master Timeline").GetComponent<PlayableDirector>();
-
-            if (masterTimeline == null)
-            {
-                Debug.LogError("Master Timeline PlayableDirector not found in the scene.");
-            }
-            else
-            {
-                Debug.Log("Master Timeline successfully assigned.");
-            }
-        }
-    }
-
-    private void StopMasterTimeline()
-    {
-        if (masterTimeline != null)
-        {
-            masterTimeline.Stop(); // Stop the timeline completely
-            masterTimeline.time = 0; // Reset timeline position to the start
-            masterTimeline.Evaluate();
-            Debug.Log("Master Timeline stopped.");
-        }
     }
 
     private void AssignUITextObjects()
@@ -136,7 +102,7 @@ public class PersistentGameManager : MonoBehaviour
             if (playerLives <= 0)
             {
                 isDead = true;
-                StopMasterTimeline();
+                Time.timeScale = 0f;
                 ShowTransitionScreen(isDead);
             }
         }
@@ -160,6 +126,7 @@ public class PersistentGameManager : MonoBehaviour
 
     public void ResetDeathState()
     {
+        Time.timeScale = 1.0f;
         isDead = false;
         ResetScores();
         ClearGameScoreText();
@@ -239,6 +206,7 @@ public class PersistentGameManager : MonoBehaviour
     {
         if (isDead)
         {
+            Time.timeScale = 1.0f;
             isDead = false;
             playerLives = 3;
         }
@@ -276,8 +244,5 @@ public class PersistentGameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-
-
 }
 
