@@ -23,10 +23,13 @@ public class PlayerCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (PersistentGameManager.Instance.isDead)
+        {
+            return;
+        }
         if (!PersistentGameManager.Instance.isCrashed)
         {
             StartCrashSequence();
-            //PersistentGameManager.Instance.DecrementLives();
             PersistentGameManager.Instance.StartDeathSequence();
         }
 
@@ -43,7 +46,5 @@ public class PlayerCollision : MonoBehaviour
             audioSource.Stop();
         }
         audioSource.PlayOneShot(explosionAudioClip);
-
-        sceneManager.RestartLevelWithDelay();
     }
 }
