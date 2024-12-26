@@ -14,6 +14,8 @@ public class PersistentGameManager : MonoBehaviour
     public bool isCrashed = false;
     private int enemyHitScore = 0;
     private int enemyKillCount = 0;
+    private int highestScore = 0;
+    private int highestKills = 0;
     public bool isDead = false;
 
     [SerializeField] GameObject gameUIPanel;
@@ -25,8 +27,10 @@ public class PersistentGameManager : MonoBehaviour
     [SerializeField] GameObject missionSuccessPanel;
     [SerializeField] GameObject missionFailedPanel;
     [SerializeField] TMP_Text missionSuccessKillsText;
+    [SerializeField] TMP_Text missionSuccessScoreText;
     [SerializeField] TMP_Text missionSuccessLivesText;
     [SerializeField] TMP_Text missionFailedKillsText;
+    [SerializeField] TMP_Text missionFailedScoreText;
     [SerializeField] TMP_Text missionFailedLivesText;
     [SerializeField] Button missionSuccessProceedButton;
     [SerializeField] Button missionSuccessReturnButton;
@@ -111,6 +115,7 @@ public class PersistentGameManager : MonoBehaviour
     public void StartDeathSequence()
     {
         DecrementLives();
+        SetHighScoreAndKills();
         if (isDead)
         {
             return;
@@ -176,10 +181,12 @@ public class PersistentGameManager : MonoBehaviour
         transitionCanvas.SetActive(true);
         if (playerDead)
         {
+            SetHighScoreAndKills();
             missionSuccessPanel.SetActive(false);
             missionFailedPanel.SetActive(true);
-            missionFailedLivesText.text = "Lives: " + playerLives.ToString();
-            missionFailedKillsText.text = "Kills: " + enemyKillCount.ToString();
+            missionFailedLivesText.text = "Lives Remaining: " + playerLives.ToString();
+            missionFailedKillsText.text = "Highest Kills: " + highestKills.ToString();
+            missionFailedScoreText.text = "Highest Score: " + highestScore.ToString();
             // Ensure buttons are only assigned once to avoid duplicate listeners
             missionFailedReturnButton.onClick.RemoveAllListeners();
             missionFailedProceedButton.onClick.RemoveAllListeners();
@@ -193,6 +200,7 @@ public class PersistentGameManager : MonoBehaviour
             missionSuccessPanel.SetActive(true);
             missionSuccessLivesText.text = "Lives: " + playerLives.ToString();
             missionSuccessKillsText.text = "Kills: " + enemyKillCount.ToString();
+            missionSuccessScoreText.text = "Score: " + enemyHitScore.ToString();
             // Ensure buttons are only assigned once to avoid duplicate listeners
             missionSuccessReturnButton.onClick.RemoveAllListeners();
             missionSuccessProceedButton.onClick.RemoveAllListeners();
@@ -239,6 +247,22 @@ public class PersistentGameManager : MonoBehaviour
         Invoke("ReturnToMain", 1);
         Instance.transitionCanvas.SetActive(false);
     }
+
+
+    void SetHighScoreAndKills()
+    {
+        if(enemyHitScore > highestScore)
+        {
+            highestScore = enemyHitScore;
+        }
+
+        if(enemyKillCount > highestKills)
+        {
+            highestKills = enemyKillCount;
+        }
+
+    }
+
 
     void OnDestroy()
     {
