@@ -17,6 +17,7 @@ public class PersistentGameManager : MonoBehaviour
     private int highestScore = 0;
     private int highestKills = 0;
     public bool isDead = false;
+    public bool levelCleared = false;
 
     [SerializeField] GameObject gameUIPanel;
     [SerializeField] TMP_Text playerLivesText;
@@ -196,6 +197,7 @@ public class PersistentGameManager : MonoBehaviour
         }
         else
         {
+            Time.timeScale = 0f;
             missionFailedPanel.SetActive(false);
             missionSuccessPanel.SetActive(true);
             missionSuccessLivesText.text = "Lives: " + playerLives.ToString();
@@ -216,6 +218,14 @@ public class PersistentGameManager : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             isDead = false;
+            playerLives = 3;
+        }
+
+        // THIS LOGIC IS HERE AS PLACEHOLDER. THIS SHOULD BE REMOVED & FEFACOTED INTO THE LOAD NEXT STAGE FUNCTION. PLAYER LIVES SHOULD NOT RESET TO 3
+        if (levelCleared)
+        {
+            Time.timeScale = 1.0f;
+            levelCleared = false;
             playerLives = 3;
         }
         transitionCanvas.SetActive(false);

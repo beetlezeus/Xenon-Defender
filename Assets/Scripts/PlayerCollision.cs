@@ -27,6 +27,14 @@ public class PlayerCollision : MonoBehaviour
         {
             return;
         }
+        if(other.gameObject.tag == "Finish")
+        {
+            PersistentGameManager.Instance.levelCleared = true;
+            PersistentGameManager.Instance.ShowTransitionScreen(false);
+            Time.timeScale = 0f;
+            return;
+        }
+
         if (!PersistentGameManager.Instance.isCrashed)
         {
             StartCrashSequence();

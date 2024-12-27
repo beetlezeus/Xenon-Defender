@@ -7611,7 +7611,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -299.80154, y: -53.295288, z: -299.61816, w: 0}
+  m_margin: {x: -274.62497, y: -53.295288, z: -274.44162, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -12646,6 +12646,10 @@ PrefabInstance:
     - target: {fileID: 1103160455155403789, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103160455155403789, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2717937816071199621, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
       propertyPath: m_LocalPosition.y
