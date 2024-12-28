@@ -182,34 +182,44 @@ public class PersistentGameManager : MonoBehaviour
         transitionCanvas.SetActive(true);
         if (playerDead)
         {
-            SetHighScoreAndKills();
-            missionSuccessPanel.SetActive(false);
-            missionFailedPanel.SetActive(true);
-            missionFailedLivesText.text = "Lives Remaining: " + playerLives.ToString();
-            missionFailedKillsText.text = "Highest Kills: " + highestKills.ToString();
-            missionFailedScoreText.text = "Highest Score: " + highestScore.ToString();
-            // Ensure buttons are only assigned once to avoid duplicate listeners
-            missionFailedReturnButton.onClick.RemoveAllListeners();
-            missionFailedProceedButton.onClick.RemoveAllListeners();
-            // Add Listeners 
-            missionFailedReturnButton.onClick.AddListener(ReturnToMain);
-            missionFailedProceedButton.onClick.AddListener(RestartLevel);
+            ShowMissionFailedPanel();
         }
         else
         {
-            Time.timeScale = 0f;
-            missionFailedPanel.SetActive(false);
-            missionSuccessPanel.SetActive(true);
-            missionSuccessLivesText.text = "Lives: " + playerLives.ToString();
-            missionSuccessKillsText.text = "Kills: " + enemyKillCount.ToString();
-            missionSuccessScoreText.text = "Score: " + enemyHitScore.ToString();
-            // Ensure buttons are only assigned once to avoid duplicate listeners
-            missionSuccessReturnButton.onClick.RemoveAllListeners();
-            missionSuccessProceedButton.onClick.RemoveAllListeners();
-            // Add Listeners
-            missionSuccessProceedButton.onClick.AddListener(RestartLevel);
-            missionSuccessReturnButton.onClick.AddListener(ReturnToMain);
+            ShowMissionSuccessPanel();
         }
+    }
+
+    private void ShowMissionSuccessPanel()
+    {
+        Time.timeScale = 0f;
+        missionFailedPanel.SetActive(false);
+        missionSuccessPanel.SetActive(true);
+        missionSuccessLivesText.text = "Lives Remaining: " + playerLives.ToString();
+        missionSuccessKillsText.text = "Kills: " + enemyKillCount.ToString();
+        missionSuccessScoreText.text = "Score: " + enemyHitScore.ToString();
+        // Ensure buttons are only assigned once to avoid duplicate listeners
+        missionSuccessReturnButton.onClick.RemoveAllListeners();
+        missionSuccessProceedButton.onClick.RemoveAllListeners();
+        // Add Listeners
+        missionSuccessProceedButton.onClick.AddListener(RestartLevel);
+        missionSuccessReturnButton.onClick.AddListener(ReturnToMain);
+    }
+
+    private void ShowMissionFailedPanel()
+    {
+        SetHighScoreAndKills();
+        missionSuccessPanel.SetActive(false);
+        missionFailedPanel.SetActive(true);
+        missionFailedLivesText.text = "Lives Remaining: " + playerLives.ToString();
+        missionFailedKillsText.text = "Highest Kills: " + highestKills.ToString();
+        missionFailedScoreText.text = "Highest Score: " + highestScore.ToString();
+        // Ensure buttons are only assigned once to avoid duplicate listeners
+        missionFailedReturnButton.onClick.RemoveAllListeners();
+        missionFailedProceedButton.onClick.RemoveAllListeners();
+        // Add Listeners 
+        missionFailedReturnButton.onClick.AddListener(ReturnToMain);
+        missionFailedProceedButton.onClick.AddListener(RestartLevel);
     }
 
     public void RestartLevel()

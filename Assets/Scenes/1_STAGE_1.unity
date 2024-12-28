@@ -2936,6 +2936,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lava_Creature (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 1276319509630391532, guid: d889ed12bfae446d086e772dc070fcdd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7823636942386141702, guid: d889ed12bfae446d086e772dc070fcdd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 384
@@ -14764,6 +14768,10 @@ PrefabInstance:
     - target: {fileID: 1276319509630391532, guid: d889ed12bfae446d086e772dc070fcdd, type: 3}
       propertyPath: m_Name
       value: Lava_Creature (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276319509630391532, guid: d889ed12bfae446d086e772dc070fcdd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7823636942386141702, guid: d889ed12bfae446d086e772dc070fcdd, type: 3}
       propertyPath: m_LocalPosition.x
