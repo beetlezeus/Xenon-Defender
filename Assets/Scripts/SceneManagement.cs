@@ -26,6 +26,7 @@ public class SceneManagement : MonoBehaviour
     public void LoadFirstStage()
     {
         PersistentGameManager.Instance.ResetDeathState();
+        PersistentGameManager.Instance.ResetLevelClearFlag();
         SceneManager.LoadScene(1);
     }
 

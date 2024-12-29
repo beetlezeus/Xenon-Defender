@@ -139,6 +139,11 @@ public class PersistentGameManager : MonoBehaviour
         playerLives = 3;
     }
 
+    public void ResetLevelClearFlag()
+    {
+        levelCleared = false;
+    }
+
     void UpdateLivesDisplay()
     {
 

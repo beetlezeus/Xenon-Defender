@@ -47,10 +47,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PersistentGameManager.Instance.isDead)
-        {
-            return;
-        }
+        //if (PersistentGameManager.Instance.isDead)
+        //{
+        //    return;
+        //}
         ShipPosition();
         ShipRotation();
     }
