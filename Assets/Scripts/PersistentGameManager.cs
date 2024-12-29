@@ -17,6 +17,7 @@ public class PersistentGameManager : MonoBehaviour
     private int highestScore = 0;
     private int highestKills = 0;
     public bool isDead = false;
+    public bool levelCleared = false;
 
     [SerializeField] GameObject gameUIPanel;
     [SerializeField] TMP_Text playerLivesText;
@@ -138,6 +139,11 @@ public class PersistentGameManager : MonoBehaviour
         playerLives = 3;
     }
 
+    public void ResetLevelClearFlag()
+    {
+        levelCleared = false;
+    }
+
     void UpdateLivesDisplay()
     {
 
@@ -181,33 +187,44 @@ public class PersistentGameManager : MonoBehaviour
         transitionCanvas.SetActive(true);
         if (playerDead)
         {
-            SetHighScoreAndKills();
-            missionSuccessPanel.SetActive(false);
-            missionFailedPanel.SetActive(true);
-            missionFailedLivesText.text = "Lives Remaining: " + playerLives.ToString();
-            missionFailedKillsText.text = "Highest Kills: " + highestKills.ToString();
-            missionFailedScoreText.text = "Highest Score: " + highestScore.ToString();
-            // Ensure buttons are only assigned once to avoid duplicate listeners
-            missionFailedReturnButton.onClick.RemoveAllListeners();
-            missionFailedProceedButton.onClick.RemoveAllListeners();
-            // Add Listeners 
-            missionFailedReturnButton.onClick.AddListener(ReturnToMain);
-            missionFailedProceedButton.onClick.AddListener(RestartLevel);
+            ShowMissionFailedPanel();
         }
         else
         {
-            missionFailedPanel.SetActive(false);
-            missionSuccessPanel.SetActive(true);
-            missionSuccessLivesText.text = "Lives: " + playerLives.ToString();
-            missionSuccessKillsText.text = "Kills: " + enemyKillCount.ToString();
-            missionSuccessScoreText.text = "Score: " + enemyHitScore.ToString();
-            // Ensure buttons are only assigned once to avoid duplicate listeners
-            missionSuccessReturnButton.onClick.RemoveAllListeners();
-            missionSuccessProceedButton.onClick.RemoveAllListeners();
-            // Add Listeners
-            missionSuccessProceedButton.onClick.AddListener(RestartLevel);
-            missionSuccessReturnButton.onClick.AddListener(ReturnToMain);
+            ShowMissionSuccessPanel();
         }
+    }
+
+    private void ShowMissionSuccessPanel()
+    {
+        Time.timeScale = 0f;
+        missionFailedPanel.SetActive(false);
+        missionSuccessPanel.SetActive(true);
+        missionSuccessLivesText.text = "Lives Remaining: " + playerLives.ToString();
+        missionSuccessKillsText.text = "Kills: " + enemyKillCount.ToString();
+        missionSuccessScoreText.text = "Score: " + enemyHitScore.ToString();
+        // Ensure buttons are only assigned once to avoid duplicate listeners
+        missionSuccessReturnButton.onClick.RemoveAllListeners();
+        missionSuccessProceedButton.onClick.RemoveAllListeners();
+        // Add Listeners
+        missionSuccessProceedButton.onClick.AddListener(RestartLevel);
+        missionSuccessReturnButton.onClick.AddListener(ReturnToMain);
+    }
+
+    private void ShowMissionFailedPanel()
+    {
+        SetHighScoreAndKills();
+        missionSuccessPanel.SetActive(false);
+        missionFailedPanel.SetActive(true);
+        missionFailedLivesText.text = "Lives Remaining: " + playerLives.ToString();
+        missionFailedKillsText.text = "Highest Kills: " + highestKills.ToString();
+        missionFailedScoreText.text = "Highest Score: " + highestScore.ToString();
+        // Ensure buttons are only assigned once to avoid duplicate listeners
+        missionFailedReturnButton.onClick.RemoveAllListeners();
+        missionFailedProceedButton.onClick.RemoveAllListeners();
+        // Add Listeners 
+        missionFailedReturnButton.onClick.AddListener(ReturnToMain);
+        missionFailedProceedButton.onClick.AddListener(RestartLevel);
     }
 
     public void RestartLevel()
@@ -216,6 +233,14 @@ public class PersistentGameManager : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             isDead = false;
+            playerLives = 3;
+        }
+
+        // THIS LOGIC IS HERE AS PLACEHOLDER. THIS SHOULD BE REMOVED & FEFACOTED INTO THE LOAD NEXT STAGE FUNCTION. PLAYER LIVES SHOULD NOT RESET TO 3
+        if (levelCleared)
+        {
+            Time.timeScale = 1.0f;
+            levelCleared = false;
             playerLives = 3;
         }
         transitionCanvas.SetActive(false);
