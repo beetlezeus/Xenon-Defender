@@ -263,8 +263,9 @@ public class PersistentGameManager : MonoBehaviour
 
     public void ReturnToMain()
     {
-        SceneManager.LoadScene(0);
         transitionCanvas.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 
     public void ReturnToMainWithDelay()

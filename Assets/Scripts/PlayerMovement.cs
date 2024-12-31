@@ -70,7 +70,8 @@ public class PlayerMovement : MonoBehaviour
         float clampedYPos = Mathf.Clamp(offsetYPos, -yRange, yRange);
 
 
-        transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
+        //transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
+        transform.localPosition = new Vector3(clampedXPos, clampedYPos, 0);
     }
 
     void ShipRotation()
