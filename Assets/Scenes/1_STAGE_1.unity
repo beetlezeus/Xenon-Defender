@@ -11236,7 +11236,7 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: 771ea0a8-a842-445b-aecc-26229369ff81
-      m_Path: <Keyboard>/ctrl
+      m_Path: <Keyboard>/space
       m_Interactions: 
       m_Processors: 
       m_Groups: 
