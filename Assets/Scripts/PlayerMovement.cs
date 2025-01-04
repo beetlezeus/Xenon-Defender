@@ -70,8 +70,8 @@ public class PlayerMovement : MonoBehaviour
         float clampedYPos = Mathf.Clamp(offsetYPos, -yRange, yRange);
 
 
-        //transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
-        transform.localPosition = new Vector3(clampedXPos, clampedYPos, 0);
+        transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
+        //transform.localPosition = new Vector3(clampedXPos, clampedYPos, 0);
     }
 
     void ShipRotation()
@@ -85,11 +85,11 @@ public class PlayerMovement : MonoBehaviour
 
         yaw = positionYaw + controlYaw;
 
-        roll = xMovementInput * controlRollCoefficient;
+        roll = (xMovementInput/2) * controlRollCoefficient;
 
         //transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
 
-        Quaternion targetRotation = Quaternion.Euler(pitch, yaw, roll);
+        Quaternion targetRotation = Quaternion.Euler(pitch, yaw , roll);
 
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
         
