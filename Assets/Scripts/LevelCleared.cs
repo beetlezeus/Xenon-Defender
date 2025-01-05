@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class LevelCleared : MonoBehaviour
@@ -11,8 +12,8 @@ public class LevelCleared : MonoBehaviour
         Invoke("ShowTransitionScreen", 1f);
     }
 
-    public void ShowTransitionScreen()
+    public async Task ShowTransitionScreen()
     {
-        PersistentGameManager.Instance.ShowTransitionScreen(false);
+        await PersistentGameManager.Instance.ShowTransitionScreen(false);
     }
 }

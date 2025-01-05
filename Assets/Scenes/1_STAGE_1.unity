@@ -17742,6 +17742,10 @@ PrefabInstance:
       propertyPath: fireSound
       value: 
       objectReference: {fileID: 8300000, guid: 32a243504d98c4f43b0af9b541222a21, type: 3}
+    - target: {fileID: 5681816240850476423, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
+      propertyPath: controlRollCoefficient
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 6567190609380549786, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
       propertyPath: CollisionModule.minKillSpeed
       value: 10

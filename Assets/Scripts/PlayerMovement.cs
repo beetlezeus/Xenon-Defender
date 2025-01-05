@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
         yaw = positionYaw + controlYaw;
 
-        roll = (xMovementInput/2) * controlRollCoefficient;
+        roll = (xMovementInput) * controlRollCoefficient;
 
         //transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
 
