@@ -15192,7 +15192,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1867126669}
   - component: {fileID: 1867126668}
-  - component: {fileID: 1867126670}
   m_Layer: 0
   m_Name: Level Clear Trigger
   m_TagString: Finish
@@ -15228,46 +15227,6 @@ Transform:
   - {fileID: 1126370127}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1867126670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867126667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c829b7c5855d44947bc4758f8fad8f13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Player
-  OnEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1039187734}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1867126668}
-        m_TargetAssemblyTypeName: LevelCleared, Assembly-CSharp
-        m_MethodName: SetLevelClearedFlag
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &1868922418 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7823636942386141702, guid: d889ed12bfae446d086e772dc070fcdd, type: 3}

@@ -204,6 +204,7 @@ public class PersistentGameManager : MonoBehaviour
 
     public async Task ShowTransitionScreen(bool playerDead)
     {
+        SetHighScoreAndKills();
         await highScoreManager.CheckForNewHighScore(highestScore);
         transitionCanvas.SetActive(true);
         if (newHighScore)
@@ -247,9 +248,17 @@ public class PersistentGameManager : MonoBehaviour
     private async Task OnNewHighScoreSubmit()
     {
         string playerInitials = playerInitialsInputField.text;
-        await highScoreManager.SaveHighScore(playerInitials, highestScore, highestKills);
-        newHighScore = false;
-        newHighScorePanel.SetActive(false);
+        // ensure player initials have proper value
+        if (playerInitials.Length == 0)
+        {
+            return;
+        }
+        else
+        {
+            await highScoreManager.SaveHighScore(playerInitials, highestScore, highestKills);
+            newHighScore = false;
+            newHighScorePanel.SetActive(false);
+        }
     }
 
     private void ShowMissionSuccessPanel()
