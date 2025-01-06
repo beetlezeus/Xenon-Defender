@@ -118,7 +118,7 @@ public class PersistentGameManager : MonoBehaviour
             {
                 isDead = true;
                 Time.timeScale = 0f;
-                ShowTransitionScreen(isDead);
+                _ = ShowTransitionScreen(isDead);
             }
         }
     }
@@ -127,11 +127,12 @@ public class PersistentGameManager : MonoBehaviour
     {
         DecrementLives();
         SetHighScoreAndKills();
+        ResetScores();
         if (isDead)
         {
             return;
         }
-        ResetScores();
+        //ResetScores();
         RestartLevelWithDelay();
     }
 
@@ -183,6 +184,15 @@ public class PersistentGameManager : MonoBehaviour
 
     }
 
+    public void ClearHighScoreText()
+    {
+        missionFailedScoreText.text = "";
+        missionFailedKillsText.text = "";
+        missionSuccessKillsText.text = "";
+        missionSuccessScoreText.text = "";
+
+    }
+
     public void UpdateEnemyKillCount()
     {
         if (!isCrashed)
@@ -212,6 +222,8 @@ public class PersistentGameManager : MonoBehaviour
 
     private void ShowNewHighScorePanel()
     {
+        playerInitialsInputField.text = "";
+        SetHighScoreAndKills();
         Time.timeScale = 0f;
         missionFailedPanel.SetActive(false);
         missionSuccessPanel.SetActive(false);
@@ -242,6 +254,7 @@ public class PersistentGameManager : MonoBehaviour
 
     private void ShowMissionSuccessPanel()
     {
+        SetHighScoreAndKills();
         Time.timeScale = 0f;
         missionFailedPanel.SetActive(false);
         missionSuccessPanel.SetActive(true);
@@ -272,6 +285,12 @@ public class PersistentGameManager : MonoBehaviour
         missionFailedProceedButton.onClick.AddListener(RestartLevel);
     }
 
+    public void ResetHighScores()
+    {
+        highestKills = 0;
+        highestScore = 0;
+    }
+
     public void RestartLevel()
     {
         if (isDead)
@@ -279,6 +298,8 @@ public class PersistentGameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             isDead = false;
             playerLives = 3;
+            ResetHighScores();
+            ClearHighScoreText();
         }
 
         // THIS LOGIC IS HERE AS PLACEHOLDER. THIS SHOULD BE REMOVED & FEFACOTED INTO THE LOAD NEXT STAGE FUNCTION. PLAYER LIVES SHOULD NOT RESET TO 3
@@ -287,6 +308,8 @@ public class PersistentGameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             levelCleared = false;
             playerLives = 3;
+            ResetHighScores();
+            ClearHighScoreText();
         }
         transitionCanvas.SetActive(false);
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -308,6 +331,7 @@ public class PersistentGameManager : MonoBehaviour
 
     public void ReturnToMain()
     {
+        ResetHighScores();
         transitionCanvas.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
