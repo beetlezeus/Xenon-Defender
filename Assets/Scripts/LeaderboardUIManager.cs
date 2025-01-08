@@ -15,11 +15,6 @@ public class LeaderboardUIManager : MonoBehaviour
         {
             highscoreManager = GameObject.Find("Game Manager").GetComponent<HighscoreManager>();
         }
-
-        if(leaderboardText == null)
-        {
-
-        }
     }
 
     public async Task DisplayHighScores()
@@ -32,17 +27,16 @@ public class LeaderboardUIManager : MonoBehaviour
         }
 
         leaderboardText.text = "";
+        leaderboardText.text += "\n";
         var highScores = await highscoreManager.LoadHighScores();
 
         // Check if there are no scores
         if (highScores.Count == 0)
         {
-            leaderboardText.text = "No high scores yet!";
+            leaderboardText.text += "\n";
+            leaderboardText.text += "No high scores yet!";
             return;
         }
-
-        //leaderboardText.text = " ** Top 10 Scores \n";
-        leaderboardText.text += "\n";
 
         foreach (var (playerName, score, kills) in highScores)
         {

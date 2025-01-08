@@ -421,10 +421,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 597521971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -400, y: -295}
-  m_SizeDelta: {x: 1920, y: 51}
+  m_AnchoredPosition: {x: 0, y: -86}
+  m_SizeDelta: {x: 1120, y: -399}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &89694040
 MonoBehaviour:
@@ -1431,8 +1431,6 @@ MonoBehaviour:
     shoot lasers
     : Hold x key
 
-    activate shield : z key
-
 
     Pause game : esc key'
   m_isRightToLeft: 0
@@ -2051,7 +2049,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Level
+  m_text: Play Again
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35164b8fb4a55441ba3020ee89435f75, type: 2}
   m_sharedMaterial: {fileID: 8086149564074919638, guid: 35164b8fb4a55441ba3020ee89435f75, type: 2}
@@ -7062,9 +7060,9 @@ RectTransform:
   - {fileID: 2099666963}
   m_Father: {fileID: 597521971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 185}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -45}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1011213009
@@ -12542,10 +12540,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 597521971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -400, y: -325}
-  m_SizeDelta: {x: 1920, y: 51}
+  m_AnchoredPosition: {x: 0, y: -115.99997}
+  m_SizeDelta: {x: 1120, y: -399}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1932042384
 MonoBehaviour:
