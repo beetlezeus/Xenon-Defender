@@ -27,15 +27,15 @@ public class PlayerCollision : MonoBehaviour
         {
             return;
         }
-        if(other.gameObject.tag == "Finish")
+        if (other.gameObject.tag == "Finish")
         {
             PersistentGameManager.Instance.levelCleared = true;
-            PersistentGameManager.Instance.ShowTransitionScreen(false);
+            _ = PersistentGameManager.Instance.ShowTransitionScreen(false);
             Time.timeScale = 0f;
             return;
         }
 
-        if (!PersistentGameManager.Instance.isCrashed)
+        if (!PersistentGameManager.Instance.isCrashed && !PersistentGameManager.Instance.levelCleared)
         {
             StartCrashSequence();
             PersistentGameManager.Instance.StartDeathSequence();
