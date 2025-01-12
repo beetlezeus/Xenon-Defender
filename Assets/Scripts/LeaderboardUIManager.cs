@@ -28,19 +28,26 @@ public class LeaderboardUIManager : MonoBehaviour
 
         leaderboardText.text = "";
         leaderboardText.text += "\n";
-        var highScores = await highscoreManager.LoadHighScores();
-
-        // Check if there are no scores
-        if (highScores.Count == 0)
+        try
         {
-            leaderboardText.text += "\n";
-            leaderboardText.text += "No high scores yet!";
-            return;
+            var highScores = await highscoreManager.LoadHighScores();
+
+            // Check if there are no scores
+            if (highScores.Count == 0)
+            {
+                leaderboardText.text += "\n";
+                leaderboardText.text += "No high scores yet!";
+                return;
+            }
+
+            foreach (var (playerName, score, kills) in highScores)
+            {
+                leaderboardText.text += $"{playerName}: {score} points, {kills} kills\n";
+            }
         }
-
-        foreach (var (playerName, score, kills) in highScores)
+        catch(System.Exception ex)
         {
-            leaderboardText.text += $"{playerName}: {score} points, {kills} kills\n";
+            Debug.LogError($"Error loading Leaderboard: {ex.Message}");
         }
     }
 
