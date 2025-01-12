@@ -17,6 +17,7 @@ public class PersistentGameManager : MonoBehaviour
     private int enemyKillCount = 0;
     private int highestScore = 0;
     private int highestKills = 0;
+    public int sessionHighScore = 0;
     public bool isDead = false;
     public bool levelCleared = false;
     public bool newHighScore = false;
@@ -327,7 +328,7 @@ public class PersistentGameManager : MonoBehaviour
 
     public void RestartLevelWithDelay()
     {
-        Invoke("RestartLevel", 1);
+        Invoke(nameof(RestartLevel), 1);
         transitionCanvas.SetActive(false);
     }
 
@@ -348,7 +349,7 @@ public class PersistentGameManager : MonoBehaviour
 
     public void ReturnToMainWithDelay()
     {
-        Invoke("ReturnToMain", 1);
+        Invoke(nameof(ReturnToMain), 1);
         Instance.transitionCanvas.SetActive(false);
     }
 
@@ -360,7 +361,12 @@ public class PersistentGameManager : MonoBehaviour
             highestScore = enemyHitScore;
         }
 
-        if(enemyKillCount > highestKills)
+        if (highestScore > sessionHighScore)
+        {
+            sessionHighScore = highestScore;
+        }
+
+        if (enemyKillCount > highestKills)
         {
             highestKills = enemyKillCount;
         }
