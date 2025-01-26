@@ -18,7 +18,9 @@ public class HighscoreManager : MonoBehaviour
 {
     public async Task SaveHighScore(string playerName, int score, int kills)
     {
-        ///////// OLD IMPLEMENTATION WITH CLOUD SAVE (TIED TO AUTHENTICATED USER) LOCAL HIGH SCORES
+        ///////// OLD IMPLEMENTATION WITH CLOUD SAVE (TIED TO AUTHENTICATED USER) LOCAL HIGH SCORES ///////
+        /// THIS CAN BE USED FOR IMPLEMENTING LOCAL HIGH-SCORES IN ADDITON TO GLOBAL LEADERBOARD //////////
+        /// 
         //try
         //{
         //    string uniqueKey = $"HighScore_{playerName}";
@@ -61,9 +63,10 @@ public class HighscoreManager : MonoBehaviour
 
     public async Task<List<(string playerName, int score, int kills)>> LoadHighScores()
     {
-        ///////// OLD IMPLEMENTATION WITH CLOUD SAVE (TIED TO AUTHENTICATED USER) LOCAL HIGH SCORES
-        //var highScores = new List<(string playerName, int score, int kills)>();
+        ///////// OLD IMPLEMENTATION WITH CLOUD SAVE (TIED TO AUTHENTICATED USER) LOCAL HIGH SCORES ///////
+        /// THIS CAN BE USED FOR IMPLEMENTING LOCAL HIGH-SCORES IN ADDITON TO GLOBAL LEADERBOARD //////////
 
+        //var highScores = new List<(string playerName, int score, int kills)>();
         //try
         //{
         //    // Load all data from Cloud Save
@@ -220,7 +223,6 @@ public class HighscoreManager : MonoBehaviour
             if (highScores.Count < 10 || score > highScores[^1].score)
             {
                 Debug.Log("New High Score!");
-                // await SaveHighScore(playerName, score, kills); // Uncomment and implement SaveHighScore
                 PersistentGameManager.Instance.newHighScore = true;
             }
             else

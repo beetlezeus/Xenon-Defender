@@ -11214,7 +11214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9454bea30f2064468a669e52bedde13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSound: {fileID: 8300000, guid: 32a243504d98c4f43b0af9b541222a21, type: 3}
+  fireSound: {fileID: 8300000, guid: 32f594f28e14c4dc9a7761fec9f021dc, type: 3}
   fireBeams:
   - {fileID: 997051374}
   - {fileID: 1224060733}

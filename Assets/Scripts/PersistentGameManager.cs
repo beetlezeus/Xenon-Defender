@@ -17,7 +17,7 @@ public class PersistentGameManager : MonoBehaviour
     private int enemyKillCount = 0;
     private int highestScore = 0;
     private int highestKills = 0;
-    public int sessionHighScore = 0;
+   // public int sessionHighScore = 0;
     public bool isDead = false;
     public bool levelCleared = false;
     public bool newHighScore = false;
@@ -212,14 +212,18 @@ public class PersistentGameManager : MonoBehaviour
         {
             ShowNewHighScorePanel();
         }
-        if (playerDead)
-        {
-            ShowMissionFailedPanel();
-        }
         else
         {
-            ShowMissionSuccessPanel();
+            ShowMissionStatusPanel(playerDead);
         }
+        //if (playerDead)
+        //{
+        //    ShowMissionFailedPanel();
+        //}
+        //else
+        //{
+        //    ShowMissionSuccessPanel();
+        //}
     }
 
     private void ShowNewHighScorePanel()
@@ -230,8 +234,8 @@ public class PersistentGameManager : MonoBehaviour
         missionFailedPanel.SetActive(false);
         missionSuccessPanel.SetActive(false);
         newHighScorePanel.SetActive(true);
-        newHighScoreKills.text = "Kills: " + highestKills.ToString();
-        newHighScoreScore.text = "Score: " + highestScore.ToString();
+        newHighScoreKills.text = "Highest Kills: " + highestKills.ToString();
+        newHighScoreScore.text = "Highest Score: " + highestScore.ToString();
         // Ensure buttons are only assigned once to avoid duplicate listeners
         submitButton.onClick.RemoveAllListeners();
         // Add Listeners
@@ -259,7 +263,21 @@ public class PersistentGameManager : MonoBehaviour
             await highScoreManager.SaveHighScore(playerInitials, highestScore, highestKills);
             newHighScore = false;
             newHighScorePanel.SetActive(false);
+            ShowMissionStatusPanel(isDead);
         }
+    }
+
+    private void ShowMissionStatusPanel(bool playerDead)
+    {
+        if (playerDead)
+        {
+            ShowMissionFailedPanel();
+        }
+        else
+        {
+            ShowMissionSuccessPanel();
+        }
+
     }
 
     private void ShowMissionSuccessPanel()
@@ -359,11 +377,6 @@ public class PersistentGameManager : MonoBehaviour
         if(enemyHitScore > highestScore)
         {
             highestScore = enemyHitScore;
-        }
-
-        if (highestScore > sessionHighScore)
-        {
-            sessionHighScore = highestScore;
         }
 
         if (enemyKillCount > highestKills)
