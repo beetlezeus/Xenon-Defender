@@ -18,31 +18,6 @@ public class HighscoreManager : MonoBehaviour
 {
     public async Task SaveHighScore(string playerName, int score, int kills)
     {
-        ///////// OLD IMPLEMENTATION WITH CLOUD SAVE (TIED TO AUTHENTICATED USER) LOCAL HIGH SCORES ///////
-        /// THIS CAN BE USED FOR IMPLEMENTING LOCAL HIGH-SCORES IN ADDITON TO GLOBAL LEADERBOARD //////////
-        /// 
-        //try
-        //{
-        //    string uniqueKey = $"HighScore_{playerName}";
-
-        //    // Create a high score entry and serialize it as JSON
-        //    var highScoreEntry = new HighScoreEntry { Score = score, Kills = kills };
-        //    string jsonValue = JsonUtility.ToJson(highScoreEntry);
-
-        //    // Verify JSON serialization
-        //    Debug.Log($"Serialized JSON: {jsonValue}");
-
-        //    // Save the JSON string to Cloud Save
-        //    var data = new Dictionary<string, object> { { uniqueKey, jsonValue } };
-        //    await CloudSaveService.Instance.Data.Player.SaveAsync(data);
-
-        //    Debug.Log($"High score saved: {uniqueKey} -> {jsonValue}");
-        //}
-        //catch (System.Exception ex)
-        //{
-        //    Debug.LogError($"Error saving high score: {ex.Message}");
-        //}
-
         /////////// NEW IMPLEMENTATION, GLOBAL LEADERBOARD  /////////////////////////////
         ///
         /// REFERENCE: https://docs.unity.com/ugs/en-us/manual/leaderboards/manual/add-new-score /////////////
@@ -63,66 +38,6 @@ public class HighscoreManager : MonoBehaviour
 
     public async Task<List<(string playerName, int score, int kills)>> LoadHighScores()
     {
-        ///////// OLD IMPLEMENTATION WITH CLOUD SAVE (TIED TO AUTHENTICATED USER) LOCAL HIGH SCORES ///////
-        /// THIS CAN BE USED FOR IMPLEMENTING LOCAL HIGH-SCORES IN ADDITON TO GLOBAL LEADERBOARD //////////
-
-        //var highScores = new List<(string playerName, int score, int kills)>();
-        //try
-        //{
-        //    // Load all data from Cloud Save
-        //    var savedData = await CloudSaveService.Instance.Data.Player.LoadAllAsync();
-
-        //    foreach (var entry in savedData)
-        //    {
-        //        if (entry.Key.StartsWith("HighScore_"))
-        //        {
-        //            string playerName = entry.Key.Replace("HighScore_", ""); // Extract player name
-
-        //            // Use GetAsString to convert the Value property to a string, ToString() does not work here..
-        //            string rawValue = entry.Value.Value.GetAsString();
-
-        //            if (!string.IsNullOrEmpty(rawValue))
-        //            {
-        //                try
-        //                {
-        //                    // Debugging rawValue
-        //                    Debug.Log($"Raw value for key {entry.Key}: {rawValue}");
-
-        //                    // Deserialize rawValue into a HighScoreEntry object
-        //                    HighScoreEntry highScoreEntry = JsonUtility.FromJson<HighScoreEntry>(rawValue);
-
-        //                    // Add to the high scores list
-        //                    highScores.Add((playerName, highScoreEntry.Score, highScoreEntry.Kills));
-        //                }
-        //                catch (System.Exception ex)
-        //                {
-        //                    Debug.LogWarning($"Invalid high score format for key {entry.Key}: {ex.Message}");
-        //                }
-        //            }
-        //            else
-        //            {
-        //                Debug.LogWarning($"High score entry for key {entry.Key} does not contain a valid string value.");
-        //            }
-        //        }
-        //    }
-
-        //    // Sort high scores by score in descending order
-        //    highScores.Sort((a, b) => b.score.CompareTo(a.score));
-
-        //    // Trim to top 10
-        //    if (highScores.Count > 10)
-        //    {
-        //        highScores = highScores.GetRange(0, 10);
-        //    }
-        //}
-        //catch (System.Exception ex)
-        //{
-        //    Debug.LogError($"Error loading high scores: {ex.Message}");
-        //}
-
-        //return highScores;
-
-
         /////////// NEW IMPLEMENTATION, GLOBAL LEADERBOARD  /////////////////////////////
         ///
         //REFERENCE: https://docs.unity.com/ugs/en-us/manual/leaderboards/manual/get-score ////////////////
@@ -147,7 +62,7 @@ public class HighscoreManager : MonoBehaviour
                     Debug.Log($"Raw Metadata for entry {entry.Metadata}");
                     Debug.Log($"Raw Metadata type: {entry.Metadata.GetType()}");
 
-                    try   // NEEDS DEBBUGGING. CHECK OUT OLD IMPLEMENTATION FOR POINTERS
+                    try   // Attempt to create highScoreEntry object from the entry.Metadata JSON
                     {
                         HighScoreEntry highScoreEntry = JsonUtility.FromJson<HighScoreEntry>(entry.Metadata);
 

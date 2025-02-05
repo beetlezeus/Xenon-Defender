@@ -216,14 +216,6 @@ public class PersistentGameManager : MonoBehaviour
         {
             ShowMissionStatusPanel(playerDead);
         }
-        //if (playerDead)
-        //{
-        //    ShowMissionFailedPanel();
-        //}
-        //else
-        //{
-        //    ShowMissionSuccessPanel();
-        //}
     }
 
     private void ShowNewHighScorePanel()
