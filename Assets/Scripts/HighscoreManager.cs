@@ -7,25 +7,36 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEditor.Rendering;
 
+
 [System.Serializable]
+
+// A simple data structure to hold JSON-deserialized high score metadata containing player kills and player initials string
 public class HighScoreEntry
 { 
     public int Kills;
     public string PlayerName;
 }
 
+/*
+   This class integrates with Unity's Leaderboards Service to save, retrieve, and check high scores. It allows us to:
+   -- Submit a player's score and metadata
+   -- Load the top scores from the leaderboard
+   -- Determine if a new score is higher than previously saved scores
+ */
 public class HighscoreManager : MonoBehaviour
 {
+
+    /// REFERENCE: https://docs.unity.com/ugs/en-us/manual/leaderboards/manual/add-new-score
+    //Saves a new high score the a specified Leaderboard ("Highscore_Leaderboard")
+    // Metadata (player name , kills) is included so it can retrieved later
     public async Task SaveHighScore(string playerName, int score, int kills)
     {
-        /////////// NEW IMPLEMENTATION, GLOBAL LEADERBOARD  /////////////////////////////
-        ///
-        /// REFERENCE: https://docs.unity.com/ugs/en-us/manual/leaderboards/manual/add-new-score /////////////
-        /// 
         try
         {
+            // create a dictionary for storing metadata as key-value pairs
             var metadata = new Dictionary<string, string>() { { "PlayerName", playerName }, { "Kills", kills.ToString() } };
 
+            // submit the player's score and metadata to the LeaderboardService
             await LeaderboardsService.Instance.AddPlayerScoreAsync("HighScore_LeaderBoard", score, new AddPlayerScoreOptions { Metadata = metadata });
             Debug.Log($"Score {score} : kills {kills} submitted for player {playerName}");
         }
@@ -36,13 +47,12 @@ public class HighscoreManager : MonoBehaviour
     }
 
 
+  
+    //REFERENCE: https://docs.unity.com/ugs/en-us/manual/leaderboards/manual/get-score
+    // Loads the to 10 high scores from the "HighScore_Leaderboard"
+    // Returns a list of tuples containing player name, score, kills
     public async Task<List<(string playerName, int score, int kills)>> LoadHighScores()
     {
-        /////////// NEW IMPLEMENTATION, GLOBAL LEADERBOARD  /////////////////////////////
-        ///
-        //REFERENCE: https://docs.unity.com/ugs/en-us/manual/leaderboards/manual/get-score ////////////////
-        ///
-
         var highScores = new List<(string playerName, int score, int kills)>();
 
         try
@@ -96,6 +106,7 @@ public class HighscoreManager : MonoBehaviour
                     }
                 }
 
+                // Add the extracted or default values to the list
                 highScores.Add((playerName, (int)entry.Score, kills));
                 Debug.Log($"Loaded entry - {playerName}, Score {entry.Score} , Kills {kills}");
             }
@@ -107,11 +118,12 @@ public class HighscoreManager : MonoBehaviour
             Debug.LogError($"Error loading leaderboard scores: {ex.Message}");
         }
 
+        // Return the list of scores
         return highScores;
     }
 
-
-
+    // Checks if the player's new high score qualifies for a top 10 entry
+    // Checks if the player's new high score is higher than their previously saved score
     public async Task CheckForNewHighScore(int score)
     {
         try

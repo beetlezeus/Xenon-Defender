@@ -4,14 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/* 
+
+  This script handles the Pause Menu UI and its functionalities
+
+ */
 public class PauseMenu : MonoBehaviour
 {
+    // References to UI elements for the pause menu
     public GameObject pauseMenuCanvas; // Reference to the Pause Menu Canvas
     public GameObject pauseMenuPanel; // Reference to the Pause Menu Panel
     public Button resumeButton; // Reference to the Resume Button
     public Button quitButton; // Reference to the Quit Button
 
-    public bool isPaused = false;
+    public bool isPaused = false; // flag for whehter game is paused or not
 
     void Start()
     {
@@ -56,6 +62,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+        // check if the ESC key is pressed
+        // only toggle pause menu if scene build is not 0, player is alive, and gameplay is sctive
         if ((Input.GetKeyDown(KeyCode.Escape)) &&
             (SceneManager.GetActiveScene().buildIndex != 0) &&
             (!PersistentGameManager.Instance.isDead) &&
@@ -72,6 +80,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    // Resumes normal gameplay
     public void Resume()
     {
         if (pauseMenuCanvas != null)
@@ -88,6 +97,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    // Pauses the gameplay and displays pause menu
     void Pause()
     {
         if (pauseMenuCanvas != null)
@@ -104,7 +114,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
     }
 
-
+    // ends game play and returns to the main menu (scene 0)
     public void QuitToMainMenu()
     {
         // Deactivate pause menu UI

@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 
 /* 
- * This script handles a player's ship movement and rotation in a 2D space (x and y axes).
- * Movement is clamped within specified ranges to prevent going off-screen.
- * Rotation is influenced by both the ship's position on-screen and the user's control input.
+  This script handles a player's ship movement and rotation in a 2D space (x and y axes).
+  -- Movement is clamped within specified ranges to prevent going off-screen.
+  -- Rotation is influenced by both the ship's position on-screen and the user's control input.
  */
 
 public class PlayerMovement : MonoBehaviour
