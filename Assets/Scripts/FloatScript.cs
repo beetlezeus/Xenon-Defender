@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+  This is a dedicated script for adding pseudo-random motion to the lava eggs and flying insect enemy types
+ */
 public class FloatScript : MonoBehaviour
 {
     private float amplitude; // Oscillation height
