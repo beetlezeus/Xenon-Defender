@@ -17397,6 +17397,26 @@ PrefabInstance:
       propertyPath: controlRollCoefficient
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 6079296840882027011, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99849594
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079296840882027011, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.054826967
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079296840882027011, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079296840882027011, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000008381902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079296840882027011, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -6.286
+      objectReference: {fileID: 0}
     - target: {fileID: 6567190609380549786, guid: 5ab8ce6708622496cbda0cb774014460, type: 3}
       propertyPath: CollisionModule.minKillSpeed
       value: 10

@@ -57,6 +57,8 @@ public class LeaderboardUIManager : MonoBehaviour
         catch(System.Exception ex)
         {
             Debug.LogError($"Error loading Leaderboard: {ex.Message}");
+            leaderboardText.text += "... LOADING LEADERBOARD ...";
+
         }
     }
 
